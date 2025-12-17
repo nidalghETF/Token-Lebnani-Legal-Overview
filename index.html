@@ -37,14 +37,14 @@
 
         /* LANDING PAGE - COMPLETE REPLACEMENT */
 .landing-page {
-    background: transparent !important;
+    background: #ffffff !important;  /* EXACT white color */
+    background: var(--white) !important;
     background-image: none !important;
     box-shadow: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: var(--navy);
     position: absolute;
     width: 100%;
     z-index: 100;
@@ -64,20 +64,12 @@
     max-width: 90%;
 }
 
-.landing-logo {
-    background: transparent !important;
-    border: none !important;
-    border: none !important;
-    width: 300px;
-    height: auto;
-    margin-bottom: 30px;
-}
 
 .landing-name {
     background: transparent !important;
     border: none !important;
     border: none !important;
-    width: 700px;
+    width: 1000px;
     height: auto;
     margin-bottom: 40px;
 }
@@ -317,11 +309,7 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .landing-logo {
-                width: 300px;
-            }
-            .landing-name {
+        @media landing-name {
                 width: 95%;
             }
             .flip-indicator {
@@ -335,7 +323,6 @@
 <div class="landing-page" id="landing">
     <div class="landing-content">
         <!-- UPDATED with your new images -->
-<img src="logo_tlb.png" alt="Token-Lebnani Logo" class="landing-logo">
 <img src="name_TLB.png" alt="Token-Lebnani Name" class="landing-name">
         <button class="enter-btn" onclick="enterPresentation()">Enter Presentation</button>
     </div>
