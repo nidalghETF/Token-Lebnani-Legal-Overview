@@ -303,7 +303,8 @@
             color: var(--white);
         }
 
-        .business-model .section-title,
+          /* Force white text on blue backgrounds */
+        .business-model h2,
         .business-model .section-subtitle,
         .business-model .section-content p {
             color: var(--white);
@@ -407,12 +408,17 @@
             left: 0;
         }
 
-        /* Financial Dashboard - Changed to Blue */
-        .financial-dashboard {
-            background: var(--navy);
+        .financial-dashboard h2,
+        .financial-dashboard .section-subtitle,
+        .financial-dashboard .section-content p,
+        .financial-dashboard .financial-context h4,
+        .financial-dashboard .financial-context p {
             color: var(--white);
         }
-
+        .financial-dashboard .financial-context {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
         .financial-dashboard .section-title,
         .financial-dashboard .section-subtitle,
         .financial-dashboard .section-content p {
@@ -468,10 +474,12 @@
             color: var(--white);
         }
 
-        .partnership .section-title,
+       .partnership h2,
         .partnership .section-subtitle,
-        .partnership .section-content p {
-            color: var(--white) !important;
+        .partnership .section-content p,
+        .partnership .partnership-details p,
+        .partnership .partnership-card li {
+            color: var(--white);
         }
 
         .partnership-grid {
@@ -615,13 +623,10 @@
     <!-- Header with Logo -->
     <header class="header">
         <div class="container">
-                    <div class="header-content">
-            <img src="images/TLB LOGO.png" alt="Token-Lebnani Logo" class="logo-img">
+                           <div class="header-content">
+            <img src="images/TLB_LOGO.png" alt="Token-Lebnani Logo" class="logo-img">
             <div class="brand-info">
-                <div class="logo">Token-Lebnani</div>
-                <div class="tagline-container">
-                    <img src="images/TLB & slogan.png" alt="Token-Lebnani Tagline" class="tagline-img">
-                </div>
+                <img src="images/TLB_slogan.png" alt="Token-Lebnani Name" class="name-img">
             </div>
         </div>
     </header>
