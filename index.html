@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset and base styles from Token Lebnani */
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -22,33 +22,14 @@
             min-height: 100vh;
         }
 
-        /* Moving Background using your background.png */
-        #moving-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 300%;
-            height: 100vh;
-            background-image: url('background.png');
-            background-size: contain;
-            background-repeat: repeat-x;
-            animation: moveBackground 240s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-66.666%); }
-        }
-
-        /* Splash Screen with Enter Button */
+        /* Splash Screen - Clean with just logo, title, and gold button */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: rgba(10, 14, 42, 0.95);
+            background-color: #0a0e2a; /* Dark blue solid background */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -63,63 +44,57 @@
         }
 
         .splash-logo {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 30px;
+            width: 350px; /* 3.5x larger (was 100px) */
+            height: 350px;
+            margin: 0 auto 40px;
         }
 
         .splash-logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.3));
         }
 
-        .splash-title {
-            font-size: 2.8em;
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .splash-subtitle {
-            font-size: 1.3em;
-            color: #4a90e2;
-            margin-bottom: 40px;
+        .document-title {
+            font-size: 2.5em;
+            color: #ffffff; /* White, not blue */
+            margin-bottom: 50px;
             font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .enter-button {
-            background: linear-gradient(135deg, #4a90e2 0%, #2a5caa 100%);
-            color: white;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%); /* Gold gradient */
+            color: #000000; /* Black text on gold */
             border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
+            padding: 18px 50px;
+            font-size: 1.2em;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             margin: 0 auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .enter-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
-            background: linear-gradient(135deg, #5a9ef2 0%, #3a6cba 100%);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, #E6C158 0%, #C99A1C 100%);
         }
 
         .enter-button:active {
             transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .enter-button i {
-            font-size: 1.2em;
+            font-size: 1.3em;
             animation: arrowBounce 1.5s infinite;
         }
 
@@ -139,17 +114,18 @@
             50% { transform: translateX(5px); }
         }
 
-        /* Main Content - Hidden initially */
+        /* Main Content - No moving background, just solid dark blue */
         #main-content {
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
+            background-color: #0a0e2a; /* Solid dark blue background */
         }
 
-        /* Header */
+        /* Header - Simple, no navigation */
         header {
-            background-color: rgba(10, 14, 42, 0.95);
-            padding: 15px 0;
+            background-color: rgba(10, 14, 42, 0.98);
+            padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -162,7 +138,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Center the logo */
             align-items: center;
             padding: 0 20px;
         }
@@ -171,12 +147,12 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 15px;
+            gap: 20px;
         }
 
         .logo-image {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
         }
 
         .logo-image img {
@@ -186,87 +162,36 @@
         }
 
         .logo-text {
-            font-size: 1.6em;
+            font-size: 1.8em;
             font-weight: bold;
-            color: #ffffff;
-        }
-
-        .logo-text span {
-            color: #4a90e2;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 5px 0;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: #4a90e2;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #4a90e2;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            color: #ffffff; /* White, not blue */
         }
 
         /* Hero Section */
         .hero {
             padding-top: 140px;
             text-align: center;
-            min-height: 70vh;
+            min-height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(10, 14, 42, 0.8), rgba(10, 14, 42, 0.4));
-            z-index: -1;
         }
 
         .hero-title {
-            font-size: 3.2em;
-            margin-bottom: 25px;
-            color: #ffffff;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #ffffff; /* White, not blue */
             font-weight: 700;
             line-height: 1.2;
         }
 
         .hero-subtitle {
-            font-size: 1.3em;
-            color: #cccccc;
+            font-size: 1.2em;
+            color: #cccccc; /* Light gray */
             max-width: 800px;
-            line-height: 1.7;
-            margin-bottom: 50px;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
 
         /* Content Container */
@@ -276,7 +201,7 @@
             padding: 50px 20px 100px;
         }
 
-        /* Legal Content - Using EXACT colors from Token Lebnani */
+        /* Legal Content - All text white or gold, NO blue */
         .legal-content {
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -285,10 +210,9 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* EXACT text colors from Token Lebnani */
         .legal-section {
             margin-bottom: 50px;
-            color: #ffffff;
+            color: #ffffff; /* White text */
         }
 
         .legal-section:last-child {
@@ -297,15 +221,15 @@
 
         .legal-section h2 {
             font-size: 2.2em;
-            color: #4a90e2;
+            color: #D4AF37; /* Gold, not blue */
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3); /* Gold border */
         }
 
         .legal-section h3 {
             font-size: 1.6em;
-            color: #ffffff;
+            color: #ffffff; /* White, not blue */
             margin: 30px 0 18px;
             font-weight: 600;
         }
@@ -313,13 +237,13 @@
         .legal-section p {
             margin-bottom: 20px;
             line-height: 1.7;
-            color: #cccccc;
+            color: #cccccc; /* Light gray */
             font-size: 1.1em;
         }
 
         .legal-section ul, .legal-section ol {
             margin: 20px 0 20px 35px;
-            color: #cccccc;
+            color: #cccccc; /* Light gray */
         }
 
         .legal-section li {
@@ -329,25 +253,25 @@
         }
 
         .legal-section strong {
-            color: #ffffff;
+            color: #ffffff; /* White */
             font-weight: 600;
         }
 
         .legal-section em {
-            color: #aaaaaa;
+            color: #aaaaaa; /* Gray */
             font-style: italic;
         }
 
         .highlight-box {
-            background-color: rgba(74, 144, 226, 0.1);
-            border-left: 4px solid #4a90e2;
+            background-color: rgba(212, 175, 55, 0.1); /* Gold tint */
+            border-left: 4px solid #D4AF37; /* Gold border */
             padding: 25px;
             margin: 30px 0;
             border-radius: 0 8px 8px 0;
         }
 
         .highlight-box p {
-            color: #ffffff;
+            color: #ffffff; /* White */
             margin-bottom: 0;
             font-size: 1.1em;
             line-height: 1.6;
@@ -377,8 +301,8 @@
         }
 
         .footer-logo-image {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
         }
 
         .footer-logo-image img {
@@ -388,17 +312,13 @@
         }
 
         .footer-logo-text {
-            font-size: 1.4em;
-            color: #ffffff;
+            font-size: 1.5em;
+            color: #ffffff; /* White, not blue */
             font-weight: bold;
         }
 
-        .footer-logo-text span {
-            color: #4a90e2;
-        }
-
         .footer-text {
-            color: #999999;
+            color: #999999; /* Gray */
             text-align: center;
             font-size: 0.95em;
             line-height: 1.6;
@@ -406,37 +326,20 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .splash-title {
-                font-size: 2.4em;
-            }
-            
-            .hero-title {
-                font-size: 2.8em;
-            }
-            
-            nav ul {
-                gap: 25px;
-            }
-        }
-
         @media (max-width: 768px) {
             .splash-logo {
-                width: 140px;
-                height: 140px;
+                width: 280px;
+                height: 280px;
             }
             
-            .splash-title {
+            .document-title {
                 font-size: 2em;
-            }
-            
-            .splash-subtitle {
-                font-size: 1.1em;
+                margin-bottom: 40px;
             }
             
             .enter-button {
-                padding: 12px 30px;
-                font-size: 1em;
+                padding: 15px 40px;
+                font-size: 1.1em;
             }
             
             .hero-title {
@@ -449,20 +352,7 @@
             
             .hero {
                 padding-top: 120px;
-                min-height: 60vh;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-            
-            nav ul {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+                min-height: 35vh;
             }
             
             .legal-content {
@@ -483,25 +373,17 @@
         }
 
         @media (max-width: 480px) {
-            .splash-title {
-                font-size: 1.8em;
+            .splash-logo {
+                width: 250px;
+                height: 250px;
             }
             
-            .splash-logo {
-                width: 120px;
-                height: 120px;
+            .document-title {
+                font-size: 1.8em;
             }
             
             .hero-title {
                 font-size: 1.8em;
-            }
-            
-            nav ul {
-                gap: 15px;
-            }
-            
-            nav a {
-                font-size: 0.9em;
             }
             
             .legal-content {
@@ -521,52 +403,38 @@
             }
         }
 
-        /* Smooth scrolling for the whole page */
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Moving Background using your background.png -->
-    <div id="moving-bg"></div>
-    
-    <!-- Splash Screen with Enter Button -->
+    <!-- Splash Screen - Clean with just logo, title, and gold button -->
     <div id="splash-screen">
         <div class="splash-content">
             <div class="splash-logo">
                 <!-- Your Blue Logo.png will be loaded here -->
             </div>
-            <h1 class="splash-title">Token Lebnani</h1>
-            <p class="splash-subtitle">Legal Framework & Regulatory Overview</p>
+            <h1 class="document-title">LEGAL OVERVIEW</h1>
             <button class="enter-button" id="enter-button">
-                Enter Site
+                ENTER DOCUMENT
                 <i class="fas fa-arrow-right"></i>
             </button>
         </div>
     </div>
     
-    <!-- Main Content -->
+    <!-- Main Content - Solid dark blue background, no moving background -->
     <div id="main-content">
-        <!-- Header -->
+        <!-- Header - Simple with just logo -->
         <header>
             <div class="header-container">
                 <a href="#" class="logo">
                     <div class="logo-image">
                         <!-- Your Blue Logo.png will be loaded here -->
                     </div>
-                    <div class="logo-text">Token <span>Lebnani</span></div>
+                    <div class="logo-text">Token Lebnani</div>
                 </a>
-                <nav>
-                    <ul>
-                        <li><a href="#overview">Overview</a></li>
-                        <li><a href="#terms">Terms</a></li>
-                        <li><a href="#risks">Risks</a></li>
-                        <li><a href="#regulatory">Regulatory</a></li>
-                        <li><a href="#disclaimer">Disclaimer</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
             </div>
         </header>
         
@@ -590,7 +458,7 @@
                     <div class="footer-logo-image">
                         <!-- Your Blue Logo.png will be loaded here -->
                     </div>
-                    <div class="footer-logo-text">Token <span>Lebnani</span></div>
+                    <div class="footer-logo-text">Token Lebnani</div>
                 </div>
                 <p class="footer-text">
                     © 2024 Token Lebnani. All rights reserved.<br>
@@ -603,8 +471,11 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Load your actual images
-            function loadImage(element, imageUrl, altText, fallbackHtml = null) {
+            // URL-encoded filename for the space
+            const logoFilename = 'Blue%20Logo.png';
+            
+            // Load your logo in all places
+            function loadImage(element, imageUrl, altText) {
                 const img = new Image();
                 img.src = imageUrl;
                 img.alt = altText;
@@ -618,36 +489,19 @@
                 };
                 
                 img.onerror = function() {
-                    if (fallbackHtml) {
-                        element.innerHTML = fallbackHtml;
-                    } else {
-                        // Simple fallback using your site's color scheme
-                        element.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg, #4a90e2, #2a5caa);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:14px;border-radius:10px;">TL</div>`;
-                    }
+                    // Gold fallback using TL initials
+                    element.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg, #D4AF37, #B8860B);display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:24px;border-radius:10px;">TL</div>`;
                 };
             }
             
-            // Load moving background (your background.png)
-            const movingBg = document.getElementById('moving-bg');
-            if (movingBg) {
-                const bgImg = new Image();
-                bgImg.src = 'background.png';
-                bgImg.onload = function() {
-                    movingBg.style.backgroundImage = `url('background.png')`;
-                };
-                bgImg.onerror = function() {
-                    movingBg.style.backgroundImage = 'linear-gradient(135deg, #0a0e2a 0%, #1a1e3a 50%, #0a0e2a 100%)';
-                };
-            }
-            
-            // Load your Blue Logo.png in all places
+            // Load logo in splash screen, header, and footer
             const splashLogo = document.querySelector('.splash-logo');
             const headerLogo = document.querySelector('.logo-image');
             const footerLogo = document.querySelector('.footer-logo-image');
             
-            if (splashLogo) loadImage(splashLogo, 'Blue Logo.png', 'Token Lebnani Logo');
-            if (headerLogo) loadImage(headerLogo, 'Blue Logo.png', 'Token Lebnani Logo');
-            if (footerLogo) loadImage(footerLogo, 'Blue Logo.png', 'Token Lebnani Logo');
+            if (splashLogo) loadImage(splashLogo, logoFilename, 'Token Lebnani Logo');
+            if (headerLogo) loadImage(headerLogo, logoFilename, 'Token Lebnani Logo');
+            if (footerLogo) loadImage(footerLogo, logoFilename, 'Token Lebnani Logo');
             
             // Enter button functionality
             const enterButton = document.getElementById('enter-button');
@@ -688,49 +542,26 @@
                 })
                 .then(data => {
                     document.getElementById('legal-content').innerHTML = data;
-                    
-                    // Add smooth scrolling for navigation links
-                    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                        anchor.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const targetId = this.getAttribute('href').substring(1);
-                            const targetElement = document.getElementById(targetId);
-                            if (targetElement) {
-                                // Close mobile menu if open
-                                const nav = document.querySelector('nav ul');
-                                if (nav.classList.contains('active')) {
-                                    nav.classList.remove('active');
-                                }
-                                
-                                // Smooth scroll to target
-                                window.scrollTo({
-                                    top: targetElement.offsetTop - 100,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        });
-                    });
                 })
                 .catch(error => {
                     console.log('Loading default legal content');
-                    // Default legal content structure if file not found
+                    // Default placeholder
                     document.getElementById('legal-content').innerHTML = `
-                        <div class="legal-section" id="overview">
+                        <div class="legal-section">
                             <h2>Legal Overview</h2>
                             <p>Please ensure the legal-content.html file is in the same directory to display the full legal documentation.</p>
-                            <p>For now, here is a placeholder structure that matches your Token Lebnani legal framework.</p>
                         </div>
                     `;
                 });
             
-            // Make header transparent when at top, solid when scrolled
+            // Make header solid when scrolled
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
                     header.style.backgroundColor = 'rgba(10, 14, 42, 0.98)';
                     header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
                 } else {
-                    header.style.backgroundColor = 'rgba(10, 14, 42, 0.95)';
+                    header.style.backgroundColor = 'rgba(10, 14, 42, 0.98)';
                     header.style.boxShadow = 'none';
                 }
             });
