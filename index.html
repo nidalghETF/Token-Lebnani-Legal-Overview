@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token Lebnani - Legal Overview</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and base styles from Token Lebnani */
         * {
@@ -14,40 +15,40 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0a0e2a;
             color: #ffffff;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* Moving Background - EXACTLY like Token Lebnani */
+        /* Moving Background using your background.png */
         #moving-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 200%;
+            width: 300%;
             height: 100vh;
-            background-image: url('background.jpg');
-            background-size: cover;
+            background-image: url('background.png');
+            background-size: contain;
             background-repeat: repeat-x;
-            animation: moveBackground 120s linear infinite;
+            animation: moveBackground 240s linear infinite;
             z-index: -1;
         }
 
         @keyframes moveBackground {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-66.666%); }
         }
 
-        /* Splash Screen - EXACT copy */
+        /* Splash Screen with Enter Button */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: #0a0e2a;
+            background-color: rgba(10, 14, 42, 0.95);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -56,62 +57,86 @@
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
-        .splash-logo-container {
+        .splash-content {
             text-align: center;
-            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .splash-logo {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            animation: pulse 2s infinite;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
         }
 
         .splash-logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.3));
         }
 
         .splash-title {
-            font-size: 3em;
+            font-size: 2.8em;
             color: #ffffff;
             margin-bottom: 10px;
-            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .splash-subtitle {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #4a90e2;
-            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        .loading-container {
-            width: 200px;
-            height: 4px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            margin-top: 40px;
-            overflow: hidden;
+        .enter-button {
+            background: linear-gradient(135deg, #4a90e2 0%, #2a5caa 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
         }
 
-        .loading-bar {
-            width: 0%;
-            height: 100%;
-            background-color: #4a90e2;
-            animation: loading 2s ease-in-out forwards;
+        .enter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
+            background: linear-gradient(135deg, #5a9ef2 0%, #3a6cba 100%);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .enter-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
         }
 
-        @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        .enter-button i {
+            font-size: 1.2em;
+            animation: arrowBounce 1.5s infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
         }
 
         /* Main Content - Hidden initially */
@@ -121,15 +146,16 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Header - EXACT copy */
+        /* Header */
         header {
-            background-color: rgba(10, 14, 42, 0.9);
-            padding: 20px 0;
+            background-color: rgba(10, 14, 42, 0.95);
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-container {
@@ -145,12 +171,12 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            gap: 15px;
         }
 
         .logo-image {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+            width: 45px;
+            height: 45px;
         }
 
         .logo-image img {
@@ -160,7 +186,7 @@
         }
 
         .logo-text {
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-weight: bold;
             color: #ffffff;
         }
@@ -172,65 +198,97 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
 
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-size: 1em;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
         }
 
         nav a:hover {
             color: #4a90e2;
         }
 
-        /* Hero Section - EXACT copy */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4a90e2;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
         .hero {
-            padding-top: 150px;
+            padding-top: 140px;
             text-align: center;
-            min-height: 60vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 14, 42, 0.8), rgba(10, 14, 42, 0.4));
+            z-index: -1;
         }
 
         .hero-title {
-            font-size: 3.5em;
-            margin-bottom: 20px;
+            font-size: 3.2em;
+            margin-bottom: 25px;
             color: #ffffff;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .hero-subtitle {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #cccccc;
             max-width: 800px;
-            line-height: 1.6;
-            margin-bottom: 40px;
+            line-height: 1.7;
+            margin-bottom: 50px;
         }
 
-        /* Content Container - EXACT styling */
+        /* Content Container */
         .content-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px 80px;
+            padding: 50px 20px 100px;
         }
 
         /* Legal Content - Using EXACT colors from Token Lebnani */
         .legal-content {
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* EXACT text colors from Token Lebnani */
         .legal-section {
-            margin-bottom: 40px;
-            color: #ffffff; /* Main text color */
+            margin-bottom: 50px;
+            color: #ffffff;
         }
 
         .legal-section:last-child {
@@ -238,35 +296,36 @@
         }
 
         .legal-section h2 {
-            font-size: 2em;
-            color: #4a90e2; /* Blue accent color from site */
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            font-size: 2.2em;
+            color: #4a90e2;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
             border-bottom: 2px solid rgba(74, 144, 226, 0.3);
         }
 
         .legal-section h3 {
-            font-size: 1.5em;
-            color: #ffffff; /* White like main site */
-            margin: 25px 0 15px;
+            font-size: 1.6em;
+            color: #ffffff;
+            margin: 30px 0 18px;
             font-weight: 600;
         }
 
         .legal-section p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-            color: #cccccc; /* Light gray like main site */
-            font-size: 1.05em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: #cccccc;
+            font-size: 1.1em;
         }
 
         .legal-section ul, .legal-section ol {
-            margin: 15px 0 15px 30px;
+            margin: 20px 0 20px 35px;
             color: #cccccc;
         }
 
         .legal-section li {
-            margin-bottom: 10px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 1.1em;
         }
 
         .legal-section strong {
@@ -274,23 +333,30 @@
             font-weight: 600;
         }
 
+        .legal-section em {
+            color: #aaaaaa;
+            font-style: italic;
+        }
+
         .highlight-box {
             background-color: rgba(74, 144, 226, 0.1);
             border-left: 4px solid #4a90e2;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 5px 5px 0;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
         }
 
         .highlight-box p {
             color: #ffffff;
             margin-bottom: 0;
+            font-size: 1.1em;
+            line-height: 1.6;
         }
 
-        /* Footer - EXACT copy */
+        /* Footer */
         footer {
-            background-color: rgba(10, 14, 42, 0.95);
-            padding: 40px 0 20px;
+            background-color: rgba(10, 14, 42, 0.98);
+            padding: 50px 0 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -306,18 +372,25 @@
         .footer-logo {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            gap: 15px;
         }
 
         .footer-logo-image {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
+            width: 35px;
+            height: 35px;
+        }
+
+        .footer-logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .footer-logo-text {
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: #ffffff;
+            font-weight: bold;
         }
 
         .footer-logo-text span {
@@ -327,50 +400,85 @@
         .footer-text {
             color: #999999;
             text-align: center;
-            font-size: 0.9em;
-            line-height: 1.5;
+            font-size: 0.95em;
+            line-height: 1.6;
+            max-width: 800px;
         }
 
-        /* Responsive Design - Same as main site */
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .splash-title {
+                font-size: 2.4em;
+            }
+            
+            .hero-title {
+                font-size: 2.8em;
+            }
+            
+            nav ul {
+                gap: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .splash-logo {
+                width: 140px;
+                height: 140px;
+            }
+            
             .splash-title {
                 font-size: 2em;
             }
             
-            .splash-logo {
-                width: 100px;
-                height: 100px;
+            .splash-subtitle {
+                font-size: 1.1em;
+            }
+            
+            .enter-button {
+                padding: 12px 30px;
+                font-size: 1em;
             }
             
             .hero-title {
-                font-size: 2.5em;
+                font-size: 2.2em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1em;
             }
             
             .hero {
                 padding-top: 120px;
+                min-height: 60vh;
             }
             
             .header-container {
                 flex-direction: column;
                 gap: 15px;
+                padding-top: 10px;
+                padding-bottom: 10px;
             }
             
             nav ul {
-                gap: 15px;
+                gap: 20px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
             .legal-content {
-                padding: 20px;
+                padding: 30px;
             }
             
             .legal-section h2 {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
             
             .legal-section h3 {
-                font-size: 1.2em;
+                font-size: 1.4em;
+            }
+            
+            .content-container {
+                padding: 30px 15px 60px;
             }
         }
 
@@ -379,35 +487,62 @@
                 font-size: 1.8em;
             }
             
+            .splash-logo {
+                width: 120px;
+                height: 120px;
+            }
+            
             .hero-title {
-                font-size: 2em;
+                font-size: 1.8em;
             }
             
             nav ul {
-                gap: 10px;
+                gap: 15px;
             }
             
             nav a {
                 font-size: 0.9em;
             }
+            
+            .legal-content {
+                padding: 20px;
+            }
+            
+            .legal-section h2 {
+                font-size: 1.6em;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.3em;
+            }
+            
+            .legal-section p, .legal-section li {
+                font-size: 1em;
+            }
+        }
+
+        /* Smooth scrolling for the whole page */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Moving Background -->
+    <!-- Moving Background using your background.png -->
     <div id="moving-bg"></div>
     
-    <!-- Splash Screen -->
+    <!-- Splash Screen with Enter Button -->
     <div id="splash-screen">
-        <div class="splash-logo-container">
+        <div class="splash-content">
             <div class="splash-logo">
-                <!-- Logo will be loaded here -->
+                <!-- Your Blue Logo.png will be loaded here -->
             </div>
             <h1 class="splash-title">Token Lebnani</h1>
-            <p class="splash-subtitle">Legal Overview</p>
-        </div>
-        <div class="loading-container">
-            <div class="loading-bar"></div>
+            <p class="splash-subtitle">Legal Framework & Regulatory Overview</p>
+            <button class="enter-button" id="enter-button">
+                Enter Site
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
     
@@ -418,7 +553,7 @@
             <div class="header-container">
                 <a href="#" class="logo">
                     <div class="logo-image">
-                        <!-- Logo will be loaded here -->
+                        <!-- Your Blue Logo.png will be loaded here -->
                     </div>
                     <div class="logo-text">Token <span>Lebnani</span></div>
                 </a>
@@ -429,6 +564,7 @@
                         <li><a href="#risks">Risks</a></li>
                         <li><a href="#regulatory">Regulatory</a></li>
                         <li><a href="#disclaimer">Disclaimer</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -437,13 +573,13 @@
         <!-- Hero Section -->
         <section class="hero">
             <h1 class="hero-title">Legal Framework & Regulatory Overview</h1>
-            <p class="hero-subtitle">Comprehensive legal documentation and regulatory information for the Token Lebnani digital asset offering</p>
+            <p class="hero-subtitle">Comprehensive legal documentation and regulatory information for the Token Lebnani digital asset offering. This document outlines the terms, conditions, risk factors, and compliance framework governing the Token Lebnani initiative.</p>
         </section>
         
         <!-- Main Content -->
         <div class="content-container">
             <div class="legal-content" id="legal-content">
-                <!-- Legal content will be loaded here -->
+                <!-- Legal content will be loaded from legal-content.html -->
             </div>
         </div>
         
@@ -452,13 +588,14 @@
             <div class="footer-container">
                 <div class="footer-logo">
                     <div class="footer-logo-image">
-                        <!-- Logo will be loaded here -->
+                        <!-- Your Blue Logo.png will be loaded here -->
                     </div>
                     <div class="footer-logo-text">Token <span>Lebnani</span></div>
                 </div>
                 <p class="footer-text">
                     © 2024 Token Lebnani. All rights reserved.<br>
-                    This document is for informational purposes only and does not constitute legal or financial advice.
+                    This document is for informational purposes only and does not constitute legal, financial, or investment advice.<br>
+                    Please consult with qualified professionals before making any decisions.
                 </p>
             </div>
         </footer>
@@ -466,39 +603,11 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Load images
-            const loadImage = (elementId, imageUrl, altText, fallbackHtml) => {
-                const element = document.getElementById(elementId);
-                if (element) {
-                    const img = new Image();
-                    img.src = imageUrl;
-                    img.alt = altText;
-                    img.onload = function() {
-                        element.innerHTML = '';
-                        element.appendChild(img);
-                    };
-                    img.onerror = function() {
-                        element.innerHTML = fallbackHtml;
-                    };
-                }
-            };
-            
-            // Load logo in all places
-            const logoFallback = '<div style="width:100%;height:100%;background-color:#4a90e2;border-radius:5px;"></div>';
-            const smallLogoFallback = '<div style="width:100%;height:100%;background-color:#4a90e2;border-radius:3px;"></div>';
-            
-            loadImage('moving-bg', 'background.jpg', 'Space background', '<div style="width:100%;height:100%;background:linear-gradient(180deg, #0a0e2a 0%, #1a1e3a 100%);"></div>');
-            
-            // Set logo containers
-            const splashLogo = document.querySelector('.splash-logo');
-            const headerLogo = document.querySelector('.logo-image');
-            const footerLogo = document.querySelector('.footer-logo-image');
-            
-            // Function to set logo
-            function setLogo(element, size) {
+            // Load your actual images
+            function loadImage(element, imageUrl, altText, fallbackHtml = null) {
                 const img = new Image();
-                img.src = 'logo.png';
-                img.alt = 'Token Lebnani Logo';
+                img.src = imageUrl;
+                img.alt = altText;
                 img.style.width = '100%';
                 img.style.height = '100%';
                 img.style.objectFit = 'contain';
@@ -509,30 +618,91 @@
                 };
                 
                 img.onerror = function() {
-                    element.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg, #4a90e2, #2a5caa);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:${size === 'large' ? '24px' : '14px'};border-radius:${size === 'large' ? '10px' : '5px'};">TL</div>`;
+                    if (fallbackHtml) {
+                        element.innerHTML = fallbackHtml;
+                    } else {
+                        // Simple fallback using your site's color scheme
+                        element.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg, #4a90e2, #2a5caa);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:14px;border-radius:10px;">TL</div>`;
+                    }
                 };
             }
             
-            if (splashLogo) setLogo(splashLogo, 'large');
-            if (headerLogo) setLogo(headerLogo, 'small');
-            if (footerLogo) setLogo(footerLogo, 'small');
+            // Load moving background (your background.png)
+            const movingBg = document.getElementById('moving-bg');
+            if (movingBg) {
+                const bgImg = new Image();
+                bgImg.src = 'background.png';
+                bgImg.onload = function() {
+                    movingBg.style.backgroundImage = `url('background.png')`;
+                };
+                bgImg.onerror = function() {
+                    movingBg.style.backgroundImage = 'linear-gradient(135deg, #0a0e2a 0%, #1a1e3a 50%, #0a0e2a 100%)';
+                };
+            }
             
-            // Load legal content
+            // Load your Blue Logo.png in all places
+            const splashLogo = document.querySelector('.splash-logo');
+            const headerLogo = document.querySelector('.logo-image');
+            const footerLogo = document.querySelector('.footer-logo-image');
+            
+            if (splashLogo) loadImage(splashLogo, 'Blue Logo.png', 'Token Lebnani Logo');
+            if (headerLogo) loadImage(headerLogo, 'Blue Logo.png', 'Token Lebnani Logo');
+            if (footerLogo) loadImage(footerLogo, 'Blue Logo.png', 'Token Lebnani Logo');
+            
+            // Enter button functionality
+            const enterButton = document.getElementById('enter-button');
+            const splashScreen = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            enterButton.addEventListener('click', function() {
+                // Add click effect
+                this.style.transform = 'scale(0.95)';
+                
+                // Fade out splash screen
+                splashScreen.style.opacity = '0';
+                splashScreen.style.visibility = 'hidden';
+                
+                // Show main content
+                setTimeout(() => {
+                    mainContent.style.display = 'block';
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    }, 50);
+                }, 500);
+            });
+            
+            // Add keyboard support for Enter key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && splashScreen.style.opacity !== '0') {
+                    enterButton.click();
+                }
+            });
+            
+            // Load legal content from external file
             fetch('legal-content.html')
                 .then(response => {
-                    if (!response.ok) throw new Error('Legal content not found');
+                    if (!response.ok) throw new Error('Legal content file not found');
                     return response.text();
                 })
                 .then(data => {
                     document.getElementById('legal-content').innerHTML = data;
                     
-                    // Add smooth scrolling for navigation
-                    document.querySelectorAll('nav a').forEach(anchor => {
+                    // Add smooth scrolling for navigation links
+                    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
                         anchor.addEventListener('click', function(e) {
                             e.preventDefault();
                             const targetId = this.getAttribute('href').substring(1);
                             const targetElement = document.getElementById(targetId);
                             if (targetElement) {
+                                // Close mobile menu if open
+                                const nav = document.querySelector('nav ul');
+                                if (nav.classList.contains('active')) {
+                                    nav.classList.remove('active');
+                                }
+                                
+                                // Smooth scroll to target
                                 window.scrollTo({
                                     top: targetElement.offsetTop - 100,
                                     behavior: 'smooth'
@@ -543,30 +713,27 @@
                 })
                 .catch(error => {
                     console.log('Loading default legal content');
-                    // Default legal content if file not found
+                    // Default legal content structure if file not found
                     document.getElementById('legal-content').innerHTML = `
                         <div class="legal-section" id="overview">
                             <h2>Legal Overview</h2>
-                            <p>This is the legal overview for Token Lebnani. Please ensure the legal-content.html file is in the same directory for full content.</p>
+                            <p>Please ensure the legal-content.html file is in the same directory to display the full legal documentation.</p>
+                            <p>For now, here is a placeholder structure that matches your Token Lebnani legal framework.</p>
                         </div>
                     `;
                 });
             
-            // Handle splash screen transition
-            setTimeout(() => {
-                const splashScreen = document.getElementById('splash-screen');
-                const mainContent = document.getElementById('main-content');
-                
-                splashScreen.style.opacity = '0';
-                splashScreen.style.visibility = 'hidden';
-                
-                setTimeout(() => {
-                    mainContent.style.display = 'block';
-                    setTimeout(() => {
-                        mainContent.style.opacity = '1';
-                    }, 50);
-                }, 500);
-            }, 2000);
+            // Make header transparent when at top, solid when scrolled
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(10, 14, 42, 0.98)';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                } else {
+                    header.style.backgroundColor = 'rgba(10, 14, 42, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            });
         });
     </script>
 </body>
