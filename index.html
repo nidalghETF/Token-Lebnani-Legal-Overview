@@ -22,6 +22,25 @@
             min-height: 100vh;
         }
 
+        /* Moving Background for Splash Page */
+        #splash-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 100vh;
+            background-image: url('background.png');
+            background-size: contain;
+            background-repeat: repeat-x;
+            animation: moveBackground 240s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-66.666%); }
+        }
+
         /* Splash Screen - Clean with just logo, title, and gold button */
         #splash-screen {
             position: fixed;
@@ -29,7 +48,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: #0a0e2a; /* Dark blue solid background */
+            background-color: rgba(10, 14, 42, 0.85); /* Semi-transparent over moving background */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -44,7 +63,7 @@
         }
 
         .splash-logo {
-            width: 1050px; /* 3.5x × 3 = 10.5x original size (was 100px, now 1050px) */
+            width: 1050px; /* Large logo size */
             height: 1050px;
             margin: 0 auto 40px;
             max-width: 90vw; /* Ensure it doesn't overflow on small screens */
@@ -124,23 +143,26 @@
             background-color: #0a0e2a; /* Solid dark blue background */
         }
 
-        /* Header - Logo only, no text, 4x larger logo */
+        /* Header - Reduced to 50% height, logo auto-fits to header height */
         header {
             background-color: rgba(10, 14, 42, 0.98);
-            padding: 30px 0; /* Increased padding for larger logo */
+            height: 60px; /* Reduced to 50% of previous 120px */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            height: 100%;
             display: flex;
-            justify-content: center; /* Center the logo */
+            justify-content: center;
             align-items: center;
             padding: 0 20px;
         }
@@ -149,24 +171,25 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            height: 100%;
         }
 
         .logo-image {
-            width: 200px; /* 4x larger (was 50px, now 200px) */
-            height: 200px;
+            height: 90%; /* Logo fills 90% of header height */
+            width: auto; /* Width auto to maintain aspect ratio */
+            display: flex;
+            align-items: center;
         }
 
         .logo-image img {
-            width: 100%;
             height: 100%;
+            width: auto;
             object-fit: contain;
         }
 
-        /* REMOVED: .logo-text - No text in header, only logo */
-
-        /* Hero Section */
+        /* Hero Section - Adjusted for smaller header */
         .hero {
-            padding-top: 240px; /* Increased padding for larger header */
+            padding-top: 100px; /* Reduced for smaller header */
             text-align: center;
             min-height: 40vh;
             display: flex;
@@ -336,13 +359,8 @@
                 height: 600px;
             }
             
-            .logo-image {
-                width: 150px;
-                height: 150px;
-            }
-            
             .hero {
-                padding-top: 200px;
+                padding-top: 90px;
             }
         }
 
@@ -362,9 +380,8 @@
                 font-size: 1.1em;
             }
             
-            .logo-image {
-                width: 120px;
-                height: 120px;
+            header {
+                height: 50px; /* Smaller on mobile */
             }
             
             .hero-title {
@@ -376,7 +393,7 @@
             }
             
             .hero {
-                padding-top: 180px;
+                padding-top: 80px;
                 min-height: 35vh;
             }
             
@@ -403,13 +420,12 @@
                 height: 320px;
             }
             
-            .logo-image {
-                width: 100px;
-                height: 100px;
+            .hero {
+                padding-top: 70px;
             }
             
-            .hero {
-                padding-top: 150px;
+            header {
+                height: 45px; /* Even smaller on very small screens */
             }
         }
 
@@ -421,11 +437,6 @@
             
             .document-title {
                 font-size: 1.8em;
-            }
-            
-            .logo-image {
-                width: 80px;
-                height: 80px;
             }
             
             .hero-title {
@@ -456,6 +467,9 @@
     </style>
 </head>
 <body>
+    <!-- Moving Background for Splash Page -->
+    <div id="splash-bg"></div>
+    
     <!-- Splash Screen - Clean with just logo, title, and gold button -->
     <div id="splash-screen">
         <div class="splash-content">
@@ -472,7 +486,7 @@
     
     <!-- Main Content - Solid dark blue background, no moving background -->
     <div id="main-content">
-        <!-- Header - Logo only, no text -->
+        <!-- Header - Logo only, no text, auto-fits to header height -->
         <header>
             <div class="header-container">
                 <a href="#" class="logo">
@@ -548,6 +562,19 @@
             if (headerLogo) loadImage(headerLogo, logoFilename, 'Token Lebnani Logo');
             if (footerLogo) loadImage(footerLogo, logoFilename, 'Token Lebnani Logo');
             
+            // Load moving background for splash page
+            const splashBg = document.getElementById('splash-bg');
+            if (splashBg) {
+                const bgImg = new Image();
+                bgImg.src = 'background.png';
+                bgImg.onload = function() {
+                    splashBg.style.backgroundImage = `url('background.png')`;
+                };
+                bgImg.onerror = function() {
+                    splashBg.style.backgroundImage = 'linear-gradient(135deg, #0a0e2a 0%, #1a1e3a 50%, #0a0e2a 100%)';
+                };
+            }
+            
             // Enter button functionality
             const enterButton = document.getElementById('enter-button');
             const splashScreen = document.getElementById('splash-screen');
@@ -557,9 +584,10 @@
                 // Add click effect
                 this.style.transform = 'scale(0.95)';
                 
-                // Fade out splash screen
+                // Fade out splash screen and its background
                 splashScreen.style.opacity = '0';
                 splashScreen.style.visibility = 'hidden';
+                splashBg.style.opacity = '0';
                 
                 // Show main content
                 setTimeout(() => {
