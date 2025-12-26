@@ -44,9 +44,11 @@
         }
 
         .splash-logo {
-            width: 350px; /* 3.5x larger (was 100px) */
-            height: 350px;
+            width: 1050px; /* 3.5x × 3 = 10.5x original size (was 100px, now 1050px) */
+            height: 1050px;
             margin: 0 auto 40px;
+            max-width: 90vw; /* Ensure it doesn't overflow on small screens */
+            max-height: 60vh; /* Limit height to prevent excessive scrolling */
         }
 
         .splash-logo img {
@@ -122,10 +124,10 @@
             background-color: #0a0e2a; /* Solid dark blue background */
         }
 
-        /* Header - Simple, no navigation */
+        /* Header - Logo only, no text, 4x larger logo */
         header {
             background-color: rgba(10, 14, 42, 0.98);
-            padding: 20px 0;
+            padding: 30px 0; /* Increased padding for larger logo */
             position: fixed;
             width: 100%;
             top: 0;
@@ -147,12 +149,11 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 20px;
         }
 
         .logo-image {
-            width: 50px;
-            height: 50px;
+            width: 200px; /* 4x larger (was 50px, now 200px) */
+            height: 200px;
         }
 
         .logo-image img {
@@ -161,15 +162,11 @@
             object-fit: contain;
         }
 
-        .logo-text {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #ffffff; /* White, not blue */
-        }
+        /* REMOVED: .logo-text - No text in header, only logo */
 
         /* Hero Section */
         .hero {
-            padding-top: 140px;
+            padding-top: 240px; /* Increased padding for larger header */
             text-align: center;
             min-height: 40vh;
             display: flex;
@@ -301,8 +298,8 @@
         }
 
         .footer-logo-image {
-            width: 40px;
-            height: 40px;
+            width: 60px; /* Increased for better visibility */
+            height: 60px;
         }
 
         .footer-logo-image img {
@@ -326,10 +323,33 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .splash-logo {
+                width: 800px;
+                height: 800px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .splash-logo {
+                width: 600px;
+                height: 600px;
+            }
+            
+            .logo-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hero {
+                padding-top: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
             .splash-logo {
-                width: 280px;
-                height: 280px;
+                width: 450px;
+                height: 450px;
             }
             
             .document-title {
@@ -342,6 +362,11 @@
                 font-size: 1.1em;
             }
             
+            .logo-image {
+                width: 120px;
+                height: 120px;
+            }
+            
             .hero-title {
                 font-size: 2.2em;
             }
@@ -351,7 +376,7 @@
             }
             
             .hero {
-                padding-top: 120px;
+                padding-top: 180px;
                 min-height: 35vh;
             }
             
@@ -372,14 +397,35 @@
             }
         }
 
+        @media (max-width: 576px) {
+            .splash-logo {
+                width: 320px;
+                height: 320px;
+            }
+            
+            .logo-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .hero {
+                padding-top: 150px;
+            }
+        }
+
         @media (max-width: 480px) {
             .splash-logo {
-                width: 250px;
-                height: 250px;
+                width: 280px;
+                height: 280px;
             }
             
             .document-title {
                 font-size: 1.8em;
+            }
+            
+            .logo-image {
+                width: 80px;
+                height: 80px;
             }
             
             .hero-title {
@@ -426,14 +472,13 @@
     
     <!-- Main Content - Solid dark blue background, no moving background -->
     <div id="main-content">
-        <!-- Header - Simple with just logo -->
+        <!-- Header - Logo only, no text -->
         <header>
             <div class="header-container">
                 <a href="#" class="logo">
                     <div class="logo-image">
                         <!-- Your Blue Logo.png will be loaded here -->
                     </div>
-                    <div class="logo-text">Token Lebnani</div>
                 </a>
             </div>
         </header>
